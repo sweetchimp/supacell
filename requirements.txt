@@ -6,4 +6,5 @@ scipy
 matplotlib
 fastapi
 uvicorn
+httpx
 pytest

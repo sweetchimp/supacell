@@ -1,0 +1,1423 @@
+{
+  "dataset_label": "synthetic",
+  "forecast_hours": 72,
+  "generated_by": "api/scripts/build_battery_lookup.py",
+  "method": "Offline deterministic estimates using the first 72 hours of saved simulation demand as expected load, p10/p90 from each frozen scenario band fraction, and the frozen capacity-health and efficiency ranges.",
+  "source_files": {
+    "runtime_metadata": "results\\battery_runtime\\runtime_metadata_SYNTHETIC.json",
+    "simulations": [
+      "results\\simulations\\grid_only_hourly_SYNTHETIC.csv",
+      "results\\simulations\\grid_plus_solar_plus_battery_hourly_SYNTHETIC.csv",
+      "results\\simulations\\off_grid_solar_plus_battery_with_outages_hourly_SYNTHETIC.csv"
+    ]
+  },
+  "profile_labels": {
+    "grid_only": "Grid only",
+    "grid_plus_solar_plus_battery": "Grid plus solar plus battery",
+    "off_grid_solar_plus_battery_with_outages": "Off-grid solar plus battery with outages"
+  },
+  "capacity_kwh": 10.0,
+  "usable_dod": 0.8,
+  "nominal_level": 0.8,
+  "capacity_health_range": [
+    0.8,
+    1.0
+  ],
+  "capacity_range_justification": "80% of nameplate is a conservative end-of-life-style lower bound; 100% covers a healthy asset.",
+  "efficiency_range": [
+    0.9,
+    0.98
+  ],
+  "efficiency_range_justification": "90%-98% is a broad normal inverter/converter envelope; no vendor efficiency curve is available.",
+  "state_of_charge_values": [
+    0.2,
+    0.4,
+    0.6,
+    0.8,
+    1.0
+  ],
+  "scenarios": [
+    "correct",
+    "capacity_degraded_20pct",
+    "efficiency_overestimated",
+    "uncertainty_too_narrow"
+  ],
+  "global_assumptions": [
+    "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+    "Usable stored energy at point assumptions is max(0, 8.000 kWh SoC - 2.000 kWh DoD floor) = 6.000 kWh.",
+    "Point one-way conversion efficiency of 95% gives 5.700 kWh usable AC energy.",
+    "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+    "One-way efficiency assumption range is 90%-98%.",
+    "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+    "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+    "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+    "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+    "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+    "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+    "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+  ],
+  "limitations": [
+    "These are deterministic synthetic lookup values, not measured battery behavior.",
+    "Only the first 72 hours of each saved simulation profile are used.",
+    "Unsupported state-of-charge values are not computed at request time.",
+    "The combined range is a worst-case envelope, not a calibrated probability interval."
+  ],
+  "entries": {
+    "grid_only": {
+      "0.20": {
+        "correct": {
+          "low_hours": 0.0,
+          "expected_hours": 0.0,
+          "high_hours": 0.0,
+          "load_only_low_hours": 0.0,
+          "load_only_expected_hours": 0.0,
+          "load_only_high_hours": 0.0,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 2.000 kWh SoC - 2.000 kWh DoD floor) = 0.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 0.000 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "capacity_degraded_20pct": {
+          "low_hours": 0.0,
+          "expected_hours": 0.0,
+          "high_hours": 0.0,
+          "load_only_low_hours": 0.0,
+          "load_only_expected_hours": 0.0,
+          "load_only_high_hours": 0.0,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 2.000 kWh SoC - 2.000 kWh DoD floor) = 0.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 0.000 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "efficiency_overestimated": {
+          "low_hours": 0.0,
+          "expected_hours": 0.0,
+          "high_hours": 0.0,
+          "load_only_low_hours": 0.0,
+          "load_only_expected_hours": 0.0,
+          "load_only_high_hours": 0.0,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 2.000 kWh SoC - 2.000 kWh DoD floor) = 0.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 0.000 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "uncertainty_too_narrow": {
+          "low_hours": 0.0,
+          "expected_hours": 0.0,
+          "high_hours": 0.0,
+          "load_only_low_hours": 0.0,
+          "load_only_expected_hours": 0.0,
+          "load_only_high_hours": 0.0,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 2.000 kWh SoC - 2.000 kWh DoD floor) = 0.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 0.000 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        }
+      },
+      "0.40": {
+        "correct": {
+          "low_hours": 3.379617311762694,
+          "expected_hours": 4.666334931957858,
+          "high_hours": 5.935859949239912,
+          "load_only_low_hours": 3.992756582944199,
+          "load_only_expected_hours": 4.666334931957858,
+          "load_only_high_hours": 5.793314222172105,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 4.000 kWh SoC - 2.000 kWh DoD floor) = 2.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 1.900 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "capacity_degraded_20pct": {
+          "low_hours": 3.379617311762694,
+          "expected_hours": 4.666334931957858,
+          "high_hours": 5.935859949239912,
+          "load_only_low_hours": 3.992756582944199,
+          "load_only_expected_hours": 4.666334931957858,
+          "load_only_high_hours": 5.793314222172105,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 4.000 kWh SoC - 2.000 kWh DoD floor) = 2.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 1.900 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "efficiency_overestimated": {
+          "low_hours": 3.379617311762694,
+          "expected_hours": 4.666334931957858,
+          "high_hours": 5.935859949239912,
+          "load_only_low_hours": 3.992756582944199,
+          "load_only_expected_hours": 4.666334931957858,
+          "load_only_high_hours": 5.793314222172105,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 4.000 kWh SoC - 2.000 kWh DoD floor) = 2.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 1.900 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "uncertainty_too_narrow": {
+          "low_hours": 3.7452158833988713,
+          "expected_hours": 4.666334931957858,
+          "high_hours": 4.955745446220067,
+          "load_only_low_hours": 4.505847688257924,
+          "load_only_expected_hours": 4.666334931957858,
+          "load_only_high_hours": 4.84371556973147,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 4.000 kWh SoC - 2.000 kWh DoD floor) = 2.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 1.900 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        }
+      },
+      "0.60": {
+        "correct": {
+          "low_hours": 5.384683137911061,
+          "expected_hours": 7.448020751093076,
+          "high_hours": 8.916453513714139,
+          "load_only_low_hours": 6.541958130165011,
+          "load_only_expected_hours": 7.448020751093076,
+          "load_only_high_hours": 8.753003596443431,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 6.000 kWh SoC - 2.000 kWh DoD floor) = 4.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 3.800 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "capacity_degraded_20pct": {
+          "low_hours": 5.384683137911061,
+          "expected_hours": 7.448020751093076,
+          "high_hours": 8.916453513714139,
+          "load_only_low_hours": 6.541958130165011,
+          "load_only_expected_hours": 7.448020751093076,
+          "load_only_high_hours": 8.753003596443431,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 6.000 kWh SoC - 2.000 kWh DoD floor) = 4.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 3.800 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "efficiency_overestimated": {
+          "low_hours": 5.384683137911061,
+          "expected_hours": 7.448020751093076,
+          "high_hours": 8.916453513714139,
+          "load_only_low_hours": 6.541958130165011,
+          "load_only_expected_hours": 7.448020751093076,
+          "load_only_high_hours": 8.753003596443431,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 6.000 kWh SoC - 2.000 kWh DoD floor) = 4.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 3.800 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "uncertainty_too_narrow": {
+          "low_hours": 6.129745565109255,
+          "expected_hours": 7.448020751093076,
+          "high_hours": 7.788153488721636,
+          "load_only_low_hours": 7.259406437292906,
+          "load_only_expected_hours": 7.448020751093076,
+          "load_only_high_hours": 7.656489203187999,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 6.000 kWh SoC - 2.000 kWh DoD floor) = 4.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 3.800 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        }
+      },
+      "0.80": {
+        "correct": {
+          "low_hours": 7.089455013489808,
+          "expected_hours": 9.410320522393446,
+          "high_hours": 11.758065855890244,
+          "load_only_low_hours": 8.235412191752857,
+          "load_only_expected_hours": 9.410320522393446,
+          "load_only_high_hours": 11.464643433381415,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 8.000 kWh SoC - 2.000 kWh DoD floor) = 6.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 5.700 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "capacity_degraded_20pct": {
+          "low_hours": 7.089455013489808,
+          "expected_hours": 9.410320522393446,
+          "high_hours": 11.758065855890244,
+          "load_only_low_hours": 8.235412191752857,
+          "load_only_expected_hours": 9.410320522393446,
+          "load_only_high_hours": 11.464643433381415,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 8.000 kWh SoC - 2.000 kWh DoD floor) = 6.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 5.700 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "efficiency_overestimated": {
+          "low_hours": 7.089455013489808,
+          "expected_hours": 9.410320522393446,
+          "high_hours": 11.758065855890244,
+          "load_only_low_hours": 8.235412191752857,
+          "load_only_expected_hours": 9.410320522393446,
+          "load_only_high_hours": 11.464643433381415,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 8.000 kWh SoC - 2.000 kWh DoD floor) = 6.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 5.700 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "uncertainty_too_narrow": {
+          "low_hours": 7.775614032956528,
+          "expected_hours": 9.410320522393446,
+          "high_hours": 9.923258763526531,
+          "load_only_low_hours": 9.12588011525206,
+          "load_only_expected_hours": 9.410320522393446,
+          "load_only_high_hours": 9.724702025023403,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 8.000 kWh SoC - 2.000 kWh DoD floor) = 6.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 5.700 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        }
+      },
+      "1.00": {
+        "correct": {
+          "low_hours": 8.28444716693407,
+          "expected_hours": 11.464643433381417,
+          "high_hours": 15.385612751947999,
+          "load_only_low_hours": 9.80853709239139,
+          "load_only_expected_hours": 11.464643433381417,
+          "load_only_high_hours": 14.975230207625582,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 10.000 kWh SoC - 2.000 kWh DoD floor) = 8.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 7.600 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "capacity_degraded_20pct": {
+          "low_hours": 8.28444716693407,
+          "expected_hours": 11.464643433381417,
+          "high_hours": 15.385612751947999,
+          "load_only_low_hours": 9.80853709239139,
+          "load_only_expected_hours": 11.464643433381417,
+          "load_only_high_hours": 14.975230207625582,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 10.000 kWh SoC - 2.000 kWh DoD floor) = 8.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 7.600 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "efficiency_overestimated": {
+          "low_hours": 8.28444716693407,
+          "expected_hours": 11.464643433381417,
+          "high_hours": 15.385612751947999,
+          "load_only_low_hours": 9.80853709239139,
+          "load_only_expected_hours": 11.464643433381417,
+          "load_only_high_hours": 14.975230207625582,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 10.000 kWh SoC - 2.000 kWh DoD floor) = 8.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 7.600 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "uncertainty_too_narrow": {
+          "low_hours": 9.185762306229197,
+          "expected_hours": 11.464643433381417,
+          "high_hours": 12.314756421565534,
+          "load_only_low_hours": 11.022181050233186,
+          "load_only_expected_hours": 11.464643433381417,
+          "load_only_high_hours": 11.953680804229462,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 10.000 kWh SoC - 2.000 kWh DoD floor) = 8.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 7.600 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        }
+      }
+    },
+    "grid_plus_solar_plus_battery": {
+      "0.20": {
+        "correct": {
+          "low_hours": 0.0,
+          "expected_hours": 0.0,
+          "high_hours": 0.0,
+          "load_only_low_hours": 0.0,
+          "load_only_expected_hours": 0.0,
+          "load_only_high_hours": 0.0,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 2.000 kWh SoC - 2.000 kWh DoD floor) = 0.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 0.000 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "capacity_degraded_20pct": {
+          "low_hours": 0.0,
+          "expected_hours": 0.0,
+          "high_hours": 0.0,
+          "load_only_low_hours": 0.0,
+          "load_only_expected_hours": 0.0,
+          "load_only_high_hours": 0.0,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 2.000 kWh SoC - 2.000 kWh DoD floor) = 0.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 0.000 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "efficiency_overestimated": {
+          "low_hours": 0.0,
+          "expected_hours": 0.0,
+          "high_hours": 0.0,
+          "load_only_low_hours": 0.0,
+          "load_only_expected_hours": 0.0,
+          "load_only_high_hours": 0.0,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 2.000 kWh SoC - 2.000 kWh DoD floor) = 0.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 0.000 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "uncertainty_too_narrow": {
+          "low_hours": 0.0,
+          "expected_hours": 0.0,
+          "high_hours": 0.0,
+          "load_only_low_hours": 0.0,
+          "load_only_expected_hours": 0.0,
+          "load_only_high_hours": 0.0,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 2.000 kWh SoC - 2.000 kWh DoD floor) = 0.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 0.000 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        }
+      },
+      "0.40": {
+        "correct": {
+          "low_hours": 3.379617311762694,
+          "expected_hours": 4.666334931957858,
+          "high_hours": 5.935859949239912,
+          "load_only_low_hours": 3.992756582944199,
+          "load_only_expected_hours": 4.666334931957858,
+          "load_only_high_hours": 5.793314222172105,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 4.000 kWh SoC - 2.000 kWh DoD floor) = 2.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 1.900 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "capacity_degraded_20pct": {
+          "low_hours": 3.379617311762694,
+          "expected_hours": 4.666334931957858,
+          "high_hours": 5.935859949239912,
+          "load_only_low_hours": 3.992756582944199,
+          "load_only_expected_hours": 4.666334931957858,
+          "load_only_high_hours": 5.793314222172105,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 4.000 kWh SoC - 2.000 kWh DoD floor) = 2.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 1.900 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "efficiency_overestimated": {
+          "low_hours": 3.379617311762694,
+          "expected_hours": 4.666334931957858,
+          "high_hours": 5.935859949239912,
+          "load_only_low_hours": 3.992756582944199,
+          "load_only_expected_hours": 4.666334931957858,
+          "load_only_high_hours": 5.793314222172105,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 4.000 kWh SoC - 2.000 kWh DoD floor) = 2.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 1.900 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "uncertainty_too_narrow": {
+          "low_hours": 3.7452158833988713,
+          "expected_hours": 4.666334931957858,
+          "high_hours": 4.955745446220067,
+          "load_only_low_hours": 4.505847688257924,
+          "load_only_expected_hours": 4.666334931957858,
+          "load_only_high_hours": 4.84371556973147,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 4.000 kWh SoC - 2.000 kWh DoD floor) = 2.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 1.900 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        }
+      },
+      "0.60": {
+        "correct": {
+          "low_hours": 5.384683137911061,
+          "expected_hours": 7.448020751093076,
+          "high_hours": 8.916453513714139,
+          "load_only_low_hours": 6.541958130165011,
+          "load_only_expected_hours": 7.448020751093076,
+          "load_only_high_hours": 8.753003596443431,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 6.000 kWh SoC - 2.000 kWh DoD floor) = 4.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 3.800 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "capacity_degraded_20pct": {
+          "low_hours": 5.384683137911061,
+          "expected_hours": 7.448020751093076,
+          "high_hours": 8.916453513714139,
+          "load_only_low_hours": 6.541958130165011,
+          "load_only_expected_hours": 7.448020751093076,
+          "load_only_high_hours": 8.753003596443431,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 6.000 kWh SoC - 2.000 kWh DoD floor) = 4.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 3.800 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "efficiency_overestimated": {
+          "low_hours": 5.384683137911061,
+          "expected_hours": 7.448020751093076,
+          "high_hours": 8.916453513714139,
+          "load_only_low_hours": 6.541958130165011,
+          "load_only_expected_hours": 7.448020751093076,
+          "load_only_high_hours": 8.753003596443431,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 6.000 kWh SoC - 2.000 kWh DoD floor) = 4.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 3.800 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "uncertainty_too_narrow": {
+          "low_hours": 6.129745565109255,
+          "expected_hours": 7.448020751093076,
+          "high_hours": 7.788153488721636,
+          "load_only_low_hours": 7.259406437292906,
+          "load_only_expected_hours": 7.448020751093076,
+          "load_only_high_hours": 7.656489203187999,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 6.000 kWh SoC - 2.000 kWh DoD floor) = 4.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 3.800 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        }
+      },
+      "0.80": {
+        "correct": {
+          "low_hours": 7.089455013489808,
+          "expected_hours": 9.410320522393446,
+          "high_hours": 11.758065855890244,
+          "load_only_low_hours": 8.235412191752857,
+          "load_only_expected_hours": 9.410320522393446,
+          "load_only_high_hours": 11.464643433381415,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 8.000 kWh SoC - 2.000 kWh DoD floor) = 6.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 5.700 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "capacity_degraded_20pct": {
+          "low_hours": 7.089455013489808,
+          "expected_hours": 9.410320522393446,
+          "high_hours": 11.758065855890244,
+          "load_only_low_hours": 8.235412191752857,
+          "load_only_expected_hours": 9.410320522393446,
+          "load_only_high_hours": 11.464643433381415,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 8.000 kWh SoC - 2.000 kWh DoD floor) = 6.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 5.700 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "efficiency_overestimated": {
+          "low_hours": 7.089455013489808,
+          "expected_hours": 9.410320522393446,
+          "high_hours": 11.758065855890244,
+          "load_only_low_hours": 8.235412191752857,
+          "load_only_expected_hours": 9.410320522393446,
+          "load_only_high_hours": 11.464643433381415,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 8.000 kWh SoC - 2.000 kWh DoD floor) = 6.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 5.700 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "uncertainty_too_narrow": {
+          "low_hours": 7.775614032956528,
+          "expected_hours": 9.410320522393446,
+          "high_hours": 9.923258763526531,
+          "load_only_low_hours": 9.12588011525206,
+          "load_only_expected_hours": 9.410320522393446,
+          "load_only_high_hours": 9.724702025023403,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 8.000 kWh SoC - 2.000 kWh DoD floor) = 6.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 5.700 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        }
+      },
+      "1.00": {
+        "correct": {
+          "low_hours": 8.28444716693407,
+          "expected_hours": 11.464643433381417,
+          "high_hours": 15.385612751947999,
+          "load_only_low_hours": 9.80853709239139,
+          "load_only_expected_hours": 11.464643433381417,
+          "load_only_high_hours": 14.975230207625582,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 10.000 kWh SoC - 2.000 kWh DoD floor) = 8.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 7.600 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "capacity_degraded_20pct": {
+          "low_hours": 8.28444716693407,
+          "expected_hours": 11.464643433381417,
+          "high_hours": 15.385612751947999,
+          "load_only_low_hours": 9.80853709239139,
+          "load_only_expected_hours": 11.464643433381417,
+          "load_only_high_hours": 14.975230207625582,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 10.000 kWh SoC - 2.000 kWh DoD floor) = 8.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 7.600 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "efficiency_overestimated": {
+          "low_hours": 8.28444716693407,
+          "expected_hours": 11.464643433381417,
+          "high_hours": 15.385612751947999,
+          "load_only_low_hours": 9.80853709239139,
+          "load_only_expected_hours": 11.464643433381417,
+          "load_only_high_hours": 14.975230207625582,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 10.000 kWh SoC - 2.000 kWh DoD floor) = 8.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 7.600 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "uncertainty_too_narrow": {
+          "low_hours": 9.185762306229197,
+          "expected_hours": 11.464643433381417,
+          "high_hours": 12.314756421565534,
+          "load_only_low_hours": 11.022181050233186,
+          "load_only_expected_hours": 11.464643433381417,
+          "load_only_high_hours": 11.953680804229462,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 10.000 kWh SoC - 2.000 kWh DoD floor) = 8.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 7.600 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        }
+      }
+    },
+    "off_grid_solar_plus_battery_with_outages": {
+      "0.20": {
+        "correct": {
+          "low_hours": 0.0,
+          "expected_hours": 0.0,
+          "high_hours": 0.0,
+          "load_only_low_hours": 0.0,
+          "load_only_expected_hours": 0.0,
+          "load_only_high_hours": 0.0,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 2.000 kWh SoC - 2.000 kWh DoD floor) = 0.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 0.000 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "capacity_degraded_20pct": {
+          "low_hours": 0.0,
+          "expected_hours": 0.0,
+          "high_hours": 0.0,
+          "load_only_low_hours": 0.0,
+          "load_only_expected_hours": 0.0,
+          "load_only_high_hours": 0.0,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 2.000 kWh SoC - 2.000 kWh DoD floor) = 0.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 0.000 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "efficiency_overestimated": {
+          "low_hours": 0.0,
+          "expected_hours": 0.0,
+          "high_hours": 0.0,
+          "load_only_low_hours": 0.0,
+          "load_only_expected_hours": 0.0,
+          "load_only_high_hours": 0.0,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 2.000 kWh SoC - 2.000 kWh DoD floor) = 0.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 0.000 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "uncertainty_too_narrow": {
+          "low_hours": 0.0,
+          "expected_hours": 0.0,
+          "high_hours": 0.0,
+          "load_only_low_hours": 0.0,
+          "load_only_expected_hours": 0.0,
+          "load_only_high_hours": 0.0,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 2.000 kWh SoC - 2.000 kWh DoD floor) = 0.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 0.000 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        }
+      },
+      "0.40": {
+        "correct": {
+          "low_hours": 3.379617311762694,
+          "expected_hours": 4.666334931957858,
+          "high_hours": 5.935859949239912,
+          "load_only_low_hours": 3.992756582944199,
+          "load_only_expected_hours": 4.666334931957858,
+          "load_only_high_hours": 5.793314222172105,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 4.000 kWh SoC - 2.000 kWh DoD floor) = 2.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 1.900 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "capacity_degraded_20pct": {
+          "low_hours": 3.379617311762694,
+          "expected_hours": 4.666334931957858,
+          "high_hours": 5.935859949239912,
+          "load_only_low_hours": 3.992756582944199,
+          "load_only_expected_hours": 4.666334931957858,
+          "load_only_high_hours": 5.793314222172105,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 4.000 kWh SoC - 2.000 kWh DoD floor) = 2.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 1.900 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "efficiency_overestimated": {
+          "low_hours": 3.379617311762694,
+          "expected_hours": 4.666334931957858,
+          "high_hours": 5.935859949239912,
+          "load_only_low_hours": 3.992756582944199,
+          "load_only_expected_hours": 4.666334931957858,
+          "load_only_high_hours": 5.793314222172105,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 4.000 kWh SoC - 2.000 kWh DoD floor) = 2.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 1.900 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "uncertainty_too_narrow": {
+          "low_hours": 3.7452158833988713,
+          "expected_hours": 4.666334931957858,
+          "high_hours": 4.955745446220067,
+          "load_only_low_hours": 4.505847688257924,
+          "load_only_expected_hours": 4.666334931957858,
+          "load_only_high_hours": 4.84371556973147,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 4.000 kWh SoC - 2.000 kWh DoD floor) = 2.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 1.900 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        }
+      },
+      "0.60": {
+        "correct": {
+          "low_hours": 5.384683137911061,
+          "expected_hours": 7.448020751093076,
+          "high_hours": 8.916453513714139,
+          "load_only_low_hours": 6.541958130165011,
+          "load_only_expected_hours": 7.448020751093076,
+          "load_only_high_hours": 8.753003596443431,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 6.000 kWh SoC - 2.000 kWh DoD floor) = 4.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 3.800 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "capacity_degraded_20pct": {
+          "low_hours": 5.384683137911061,
+          "expected_hours": 7.448020751093076,
+          "high_hours": 8.916453513714139,
+          "load_only_low_hours": 6.541958130165011,
+          "load_only_expected_hours": 7.448020751093076,
+          "load_only_high_hours": 8.753003596443431,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 6.000 kWh SoC - 2.000 kWh DoD floor) = 4.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 3.800 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "efficiency_overestimated": {
+          "low_hours": 5.384683137911061,
+          "expected_hours": 7.448020751093076,
+          "high_hours": 8.916453513714139,
+          "load_only_low_hours": 6.541958130165011,
+          "load_only_expected_hours": 7.448020751093076,
+          "load_only_high_hours": 8.753003596443431,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 6.000 kWh SoC - 2.000 kWh DoD floor) = 4.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 3.800 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "uncertainty_too_narrow": {
+          "low_hours": 6.129745565109255,
+          "expected_hours": 7.448020751093076,
+          "high_hours": 7.788153488721636,
+          "load_only_low_hours": 7.259406437292906,
+          "load_only_expected_hours": 7.448020751093076,
+          "load_only_high_hours": 7.656489203187999,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 6.000 kWh SoC - 2.000 kWh DoD floor) = 4.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 3.800 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        }
+      },
+      "0.80": {
+        "correct": {
+          "low_hours": 7.089455013489808,
+          "expected_hours": 9.410320522393446,
+          "high_hours": 11.758065855890244,
+          "load_only_low_hours": 8.235412191752857,
+          "load_only_expected_hours": 9.410320522393446,
+          "load_only_high_hours": 11.464643433381415,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 8.000 kWh SoC - 2.000 kWh DoD floor) = 6.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 5.700 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "capacity_degraded_20pct": {
+          "low_hours": 7.089455013489808,
+          "expected_hours": 9.410320522393446,
+          "high_hours": 11.758065855890244,
+          "load_only_low_hours": 8.235412191752857,
+          "load_only_expected_hours": 9.410320522393446,
+          "load_only_high_hours": 11.464643433381415,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 8.000 kWh SoC - 2.000 kWh DoD floor) = 6.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 5.700 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "efficiency_overestimated": {
+          "low_hours": 7.089455013489808,
+          "expected_hours": 9.410320522393446,
+          "high_hours": 11.758065855890244,
+          "load_only_low_hours": 8.235412191752857,
+          "load_only_expected_hours": 9.410320522393446,
+          "load_only_high_hours": 11.464643433381415,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 8.000 kWh SoC - 2.000 kWh DoD floor) = 6.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 5.700 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "uncertainty_too_narrow": {
+          "low_hours": 7.775614032956528,
+          "expected_hours": 9.410320522393446,
+          "high_hours": 9.923258763526531,
+          "load_only_low_hours": 9.12588011525206,
+          "load_only_expected_hours": 9.410320522393446,
+          "load_only_high_hours": 9.724702025023403,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 8.000 kWh SoC - 2.000 kWh DoD floor) = 6.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 5.700 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        }
+      },
+      "1.00": {
+        "correct": {
+          "low_hours": 8.28444716693407,
+          "expected_hours": 11.464643433381417,
+          "high_hours": 15.385612751947999,
+          "load_only_low_hours": 9.80853709239139,
+          "load_only_expected_hours": 11.464643433381417,
+          "load_only_high_hours": 14.975230207625582,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 10.000 kWh SoC - 2.000 kWh DoD floor) = 8.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 7.600 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "capacity_degraded_20pct": {
+          "low_hours": 8.28444716693407,
+          "expected_hours": 11.464643433381417,
+          "high_hours": 15.385612751947999,
+          "load_only_low_hours": 9.80853709239139,
+          "load_only_expected_hours": 11.464643433381417,
+          "load_only_high_hours": 14.975230207625582,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 10.000 kWh SoC - 2.000 kWh DoD floor) = 8.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 7.600 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "efficiency_overestimated": {
+          "low_hours": 8.28444716693407,
+          "expected_hours": 11.464643433381417,
+          "high_hours": 15.385612751947999,
+          "load_only_low_hours": 9.80853709239139,
+          "load_only_expected_hours": 11.464643433381417,
+          "load_only_high_hours": 14.975230207625582,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 10.000 kWh SoC - 2.000 kWh DoD floor) = 8.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 7.600 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        },
+        "uncertainty_too_narrow": {
+          "low_hours": 9.185762306229197,
+          "expected_hours": 11.464643433381417,
+          "high_hours": 12.314756421565534,
+          "load_only_low_hours": 11.022181050233186,
+          "load_only_expected_hours": 11.464643433381417,
+          "load_only_high_hours": 11.953680804229462,
+          "assumptions": [
+            "Nominal 80% load band supplied as p10/p90; endpoints are treated as simultaneous load paths.",
+            "Usable stored energy at point assumptions is max(0, 10.000 kWh SoC - 2.000 kWh DoD floor) = 8.000 kWh.",
+            "Point one-way conversion efficiency of 95% gives 7.600 kWh usable AC energy.",
+            "Capacity-health assumption range is 80%-100% of supplied capacity; health scales both capacity and SoC.",
+            "One-way efficiency assumption range is 90%-98%.",
+            "Low runtime combines p90 load, low capacity health and low efficiency; high runtime combines p10 load, high capacity health and high efficiency.",
+            "The combined range is a simultaneous worst-case envelope, not a calibrated probability interval.",
+            "Low-case effective capacity is 8.000 kWh; high-case effective capacity is 10.000 kWh.",
+            "Load is applied in one-hour steps with linear interpolation inside the depletion hour.",
+            "No solar generation, grid charging, load shifting or reserve requirement during the horizon.",
+            "No inverter power cap, temperature derating or aging beyond the supplied capacity-health range.",
+            "Runtime is capped at the 72-hour forecast horizon when the battery is not depleted."
+          ]
+        }
+      }
+    }
+  }
+}
